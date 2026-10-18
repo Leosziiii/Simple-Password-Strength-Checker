@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+int main() {
+  string pw;  
+  char cont = 'y';
+
+  while (cont == 'y' || cont == 'Y'){
+     cout << "enter password:  "; 
+    cin >> pw;
+  
+
+  bool upper = false, lower = false, digit = false, special = false;
+  for (char c : pw) {
+
+           upper = upper || isupper(c);
+           lower = lower || islower(c);
+           digit = digit || isdigit(c);
+           special = special || !isalnum(c);
+         }
+
+         int score = (pw.length() >=8) + upper + lower + digit + special;
+
+         cout << (score == 5 ? "strong " : score >= 3 ? "medium" : "weak") << std:: endl;
+        
+        cout << "return back? (y/n): ";
+        cin >> cont;
+        }
+         
+return 0;
+}
+
